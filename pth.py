@@ -25,20 +25,20 @@ plt.plot(df.Close)
 st.pyplot(fig)
 
 # 100 days moving average
-st.subheader('closing price vs Time chart with 150 Moving Average')
-ma150 = df.Close.rolling(150).mean()
+st.subheader('closing price vs Time chart with 100 Moving Average')
+ma100 = df.Close.rolling(100).mean()
 fig = plt.figure(figsize = (12,6))
-plt.plot(ma150, 'green')
+plt.plot(ma100, 'green')
 plt.plot(df.Close, 'blue')
 st.pyplot(fig)
 
 #200 days moving average
-st.subheader('closing price vs Time chart with 150 and 300 Moving Average')
-ma150 = df.Close.rolling(150).mean()
-ma300 = df.Close.rolling(300).mean()
+st.subheader('closing price vs Time chart with 100 and 200 Moving Average')
+ma100 = df.Close.rolling(100).mean()
+ma200 = df.Close.rolling(200).mean()
 fig = plt.figure(figsize = (12,6))
-plt.plot(ma150, 'green')
-plt.plot(ma300 , 'red')
+plt.plot(ma100, 'green')
+plt.plot(ma200 , 'red')
 plt.plot(df.Close, 'blue')
 st.pyplot(fig)
 
@@ -59,15 +59,15 @@ model = load_model('keras_model.h5')
 
 
 #testing part
-past_150_days = data_training.tail(150)
-final_df = past_150_days.append(data_testing, ignore_index = True)
+past_100_days = data_training.tail(100)
+final_df = past_100_days.append(data_testing, ignore_index = True)
 input_data = scaler.fit_transform(final_df)
 
 x_test = []
 y_test = []
 
-for i in range(150, input_data.shape[0]):
-    x_test.append(input_data[i-150: i])
+for i in range(100, input_data.shape[0]):
+    x_test.append(input_data[i-100: i])
     y_test.append(input_data[i, 0])
 
 x_test, y_test = np.array(x_test), np.array(y_test)
