@@ -15,7 +15,7 @@ stock_symbol = st.text_input('Enter Stock Ticker' , 'AAPL')
 df = yf.download(tickers = stock_symbol, start = start, end=end )
 
 # describing data
-st.subheader('Data From 2012 - 2022')
+st.subheader('Data From 2012 - 2023')
 st.write(df.describe())
 
 #visualizaions
