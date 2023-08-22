@@ -6,8 +6,8 @@ import streamlit as st
 from keras.models import load_model
 import yfinance as yf
 
-start = '2012-01-01'
-end = '2022-10-08'
+start = '2013-01-01'
+end = '2023-06-08'
 
 st.title('Stock Prices Prediction')
 
@@ -15,7 +15,7 @@ stock_symbol = st.text_input('Enter Stock Ticker' , 'AAPL')
 df = yf.download(tickers = stock_symbol, start = start, end=end )
 
 # describing data
-st.subheader('Data From 2012 - 2023')
+st.subheader('Data From 2013 - 2023')
 st.write(df.describe())
 
 #visualizaions
